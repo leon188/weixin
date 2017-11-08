@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 30px;
+				height: 30px;
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/auto.png"  onclick="shareFriend()"/>
+		<img src="img/back.png"/>
+	</body>
+	<script>
+		function shareFriend() {
+    WeixinJSBridge.invoke('sendAppMessage',{
+                            //"appid":window.shareData.appid,
+                            "img_url":window.shareData.imgUrl,
+                            "img_width":"640",
+                            "img_height":"640",
+                            "link":window.location.href,
+                            "desc":'恩？',
+                            "title":'什么鬼',
+                            }, function(res) {
+                            _report('send_msg', res.err_msg);
+                            })
+}
+	</script>
+</html>
